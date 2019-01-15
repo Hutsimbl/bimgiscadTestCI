@@ -105,6 +105,16 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        /// Ebene aus Punkt und Normale, es wird eine willkürliche lokale X-Achse erstellt
+        /// </summary>
+        /// <param name="origin">Ebenenursprung</param>
+        /// <param name="normal">Ebenennormale (wird normiert)</param>
+        public static Plane Create(Point3 origin, Direction3 normal)
+        {
+            return new Plane(origin, normal);
+        }
+
+        /// <summary>
         /// Ebene durch durch Polygon aus Punkten, wenn nicht kollinear und mindestens 3, 
         /// Normale der Ebene zeigt in Richtung der Halbebene in der der Umring gegen den Uhrzeigersinn verläuft
         /// Der Schwerpunkt ist der Flächenschwerpunkt oder der erste Punkt
