@@ -89,6 +89,47 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        /// Rotiert vektor mit Quaternion
+        /// </summary>
+        /// <param name="q"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Direction3 operator *(Quaternion q, Direction3 v)
+        {
+            //Vec3 vv = cross(q.v, v);
+            //return b + (2.0 * ((q.s * vv) + cross(q.v, vv)));
+            double
+                abX = (q.Y * v.Z) - (q.Z * v.Y),
+                abY = (q.Z * v.X) - (q.X * v.Z),
+                abZ = (q.X * v.Y) - (q.Y * v.X);
+            return Direction3.Create(
+                v.X + (2.0 * ((q.S * abX) + (q.Y * abZ) - (q.Z * abY))),
+                v.Y + (2.0 * ((q.S * abY) + (q.Z * abX) - (q.X * abZ))),
+                v.Z + (2.0 * ((q.S * abZ) + (q.X * abY) - (q.Y * abX)))
+            );
+        }
+
+        /// <summary>
+        /// Transformiert Punkt (erst rotation dann translation)
+        /// </summary>
+        /// <param name="rotation"></param>
+        /// <param name="translation"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public static Point3 Transform(Quaternion rotation, Vector3 translation, Point3 point)
+        {
+            double
+                 abX = (rotation.Y * point.Z) - (rotation.Z * point.Y),
+                 abY = (rotation.Z * point.X) - (rotation.X * point.Z),
+                 abZ = (rotation.X * point.Y) - (rotation.Y * point.X);
+            return Point3.Create(
+                translation.X + point.X + (2.0 * ((rotation.S * abX) + (rotation.Y * abZ) - (rotation.Z * abY))),
+                translation.Y + point.Y + (2.0 * ((rotation.S * abY) + (rotation.Z * abX) - (rotation.X * abZ))),
+                translation.Z + point.Z + (2.0 * ((rotation.S * abZ) + (rotation.X * abY) - (rotation.Y * abX)))
+            );
+        }
+
+        /// <summary>
         /// Multiplikation
         /// </summary>
         /// <param name="q1"></param>
