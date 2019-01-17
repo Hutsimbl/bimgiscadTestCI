@@ -69,32 +69,12 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// </summary>
         /// <param name="p1"> 1. Punkt auf Gerade </param>
         /// <param name="p2"> 2. Punkt auf Gerade </param>
-        /// <param name="line"></param>
-        public static bool Create(Point2 p1, Point2 p2, out Line2 line)
-        {
-            line = null;
-            var dir = Direction2.NaN;
-            var vec = p2 - p1;
-            double norm = Vector2.Norm(vec);
-                if(IsValidNorm(norm))
-                { dir = Direction2.Create(vec, norm).Value; }
-                else
-                { return false; }
-             line = new Line2(p1, dir);
-            return true;
-        }
-
-        /// <summary>
-        ///  Erzeugt 2D-Gerade
-        /// </summary>
-        /// <param name="p1"> 1. Punkt auf Gerade </param>
-        /// <param name="p2"> 2. Punkt auf Gerade </param>
         internal static Line2 Create(Point2 p1, Point2 p2)
         {
             var vec = p2 - p1;
             double norm = Vector2.Norm(vec);
             var dir = Direction2.Create(vec, norm);
-            return new Line2(p1, dir.Value);
+            return new Line2(p1, dir);
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
 
         #region Constructors
 
-        private Plane(Point3 position, Direction3 axis, Direction3? refDirection = null) : base((Vector3)position, axis, refDirection ?? Direction3.Perp(axis))
+        private Plane(Point3 position, Direction3 axis, Direction3? refDirection = null) : base((Vector3)position, axis, refDirection ?? Direction3.Perp(axis), false)
         { this.position = position; }
 
 
@@ -173,6 +173,42 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="mindist"></param>
         /// <returns></returns>
         public bool Coincident(Plane other, double mindist = MINDIST) => Direction3.AreCollinear(other.Axis, this.Axis) && Touches(other, this.Position, mindist) && Touches(this, other.Position, mindist);
+
+
+        /// <summary>
+        /// Projiziert übergeordnete Richtung in das System der Ebene(2D)
+        /// </summary>
+        /// <param name="system"></param>
+        /// <param name="reference"></param>
+        /// <param name="axisPlane"></param>
+        public static Direction2 ToPlaneLocal(Axis2Placement3D system, Direction3 reference)
+        {
+            return Direction2.Create(Direction3.Dot(system.RefDirection, reference), Direction3.Dot(system.YAxis, reference), null);
+        }
+
+        /// <summary>
+        /// Projiziert übergeordneten Vektor in das System der Ebene(2D)
+        /// </summary>
+        /// <param name="system"></param>
+        /// <param name="reference"></param>
+        /// <param name="axisPlane"></param>
+        public static Vector2 ToPlaneLocal(Axis2Placement3D system, Vector3 reference)
+        {
+            return Vector2.Create(Direction3.Dot(system.RefDirection, reference), Direction3.Dot(system.YAxis, reference));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="system"></param>
+        /// <param name="reference"></param>
+        /// <param name="axisPlane"></param>
+        /// <returns></returns>
+        public static Point2 ToPlaneLocal(Axis2Placement3D system, Point3 reference)
+        {
+            var point = reference - system.Location;
+            return Point2.Create(Point3.Dot(system.RefDirection, point), Point3.Dot(system.YAxis, point));
+        }
 
         #endregion Methods
     }

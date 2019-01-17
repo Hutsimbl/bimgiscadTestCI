@@ -106,7 +106,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="vector"></param>
         /// <param name="norm"></param>
         /// <returns></returns>
-        public static Direction2? Create(Vector2 vector, double? norm) => Create(vector.X, vector.Y, norm);
+        public static Direction2 Create(Vector2 vector, double? norm) => Create(vector.X, vector.Y, norm);
 
         /// <summary>
         /// 
@@ -115,10 +115,10 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="y"></param>
         /// <param name="norm"></param>
         /// <returns></returns>
-        public static Direction2? Create(double x, double y, double? norm)
+        public static Direction2 Create(double x, double y, double? norm)
         {
             double nrm = norm ?? Common.Norm(x, y);
-            return IsValidNorm(nrm) ? (Direction2?)new Direction2(x / nrm, y / nrm) : null;
+            return IsValidNorm(nrm) ? new Direction2(x / nrm, y / nrm) : UnitX;
         }
 
         /// <summary>

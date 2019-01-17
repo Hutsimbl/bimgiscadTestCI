@@ -152,7 +152,7 @@ namespace BimGisCad.Representation.Geometry
         }
 
         /// <summary>
-        /// Rotiert Übergeordneten Richtung in das System (2D)
+        /// Projiziert übergeordnete Richtung in das System (2D)
         /// </summary>
         /// <param name="system"></param>
         /// <param name="reference"></param>
@@ -161,7 +161,7 @@ namespace BimGisCad.Representation.Geometry
         {
             Direction3 axis1, axis2;
             GetAxes(system, axisPlane, out axis1, out axis2);
-            return Direction2.Create(Direction3.Dot(axis1, reference), Direction3.Dot(axis2, reference));
+            return Direction2.Create(Direction3.Dot(axis1, reference), Direction3.Dot(axis2, reference), null);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace BimGisCad.Representation.Geometry
         public static Point3 ToLocal(Axis2Placement3D system, Point3 reference)
         {
             var point = reference - system.Location;
-            return Direction3.RotateRow(reference, system.RefDirection, system.YAxis, system.Axis);
+            return Direction3.RotateRow(point, system.RefDirection, system.YAxis, system.Axis);
         }
 
         /// <summary>
