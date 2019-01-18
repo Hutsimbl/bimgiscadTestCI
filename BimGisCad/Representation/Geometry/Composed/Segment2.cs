@@ -145,6 +145,21 @@ namespace BimGisCad.Representation.Geometry.Composed
             return true;
         }
 
+        public static Point2? Intersection(Segment2 a, Segment2 b)
+        {
+            double det = Vector2.Det(b.Direction, a.Direction);
+            if(det < TRIGTOL && -det < TRIGTOL)
+            { // kein Schnitt
+                return null;
+            }
+            double deta = Point2.Det(a.Start, a.End);
+            double detb = Point2.Det(b.Start, b.End);
+            var vab = Vector2.Create(deta, detb);
+            double detx = Vector2.Det(vab, Vector2.Create(a.Direction.X, b.Direction.X));
+            double dety = Vector2.Det(vab, Vector2.Create(a.Direction.Y, b.Direction.Y));
+            return Point2.Create(detx / det, dety / det);
+        }
+
         ///// <summary>
         ///// Beziehung eines Punktes zum Segment, Neg = rechts, Pos = links des Segments
         ///// </summary>

@@ -92,6 +92,13 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        public static Vector3 Create(Direction3 vector) => new Vector3(vector.X, vector.Y, vector.Z);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>

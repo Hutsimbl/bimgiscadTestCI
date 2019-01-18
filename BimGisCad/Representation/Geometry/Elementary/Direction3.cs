@@ -119,7 +119,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="startIndex"></param>
         /// <param name="norm"></param>
         /// <returns></returns>
-        public static Direction3? Create(IReadOnlyList<double> xyz, int startIndex, double? norm) => Create(xyz[startIndex], xyz[startIndex + 1], xyz[startIndex + 2], norm);
+        public static Direction3 Create(IReadOnlyList<double> xyz, int startIndex, double? norm) => Create(xyz[startIndex], xyz[startIndex + 1], xyz[startIndex + 2], norm);
 
         /// <summary>
         ///  Erzeugt Richtungsvektor aus Richtungs- und Zenitwinkel

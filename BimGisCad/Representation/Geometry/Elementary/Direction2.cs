@@ -128,7 +128,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="startIndex"></param>
         /// <param name="norm"></param>
         /// <returns></returns>
-        public static Direction2? Create(IReadOnlyList<double> xy, int startIndex, double? norm) => Create(xy[startIndex], xy[startIndex + 1], norm);
+        public static Direction2 Create(IReadOnlyList<double> xy, int startIndex, double? norm) => Create(xy[startIndex], xy[startIndex + 1], norm);
 
         /// <summary>
         /// 

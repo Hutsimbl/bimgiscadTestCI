@@ -274,6 +274,15 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static double Det(Vector2 a, Point2 b) => (a.X * b.Y) - (a.Y * b.X);
 
         /// <summary>
+        ///  Determinante einer 2x2 Matrix aus zwei Punkten
+        /// </summary>
+        /// <param name="a"> 1. Punkt </param>
+        /// <param name="b"> 2. Punkt </param>
+        /// <returns> Determinante </returns>
+        public static double Det(Point2 a, Point2 b) => (a.X * b.Y) - (a.Y * b.X);
+
+
+        /// <summary>
         ///  Mittelpunkt zweier Punkte
         /// </summary>
         /// <param name="a"> 1. Punkt </param>
