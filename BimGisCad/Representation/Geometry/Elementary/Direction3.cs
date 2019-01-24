@@ -27,6 +27,21 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Direction3 UnitZ => new Direction3(0.0, 0.0, 1.0);
 
         /// <summary>
+        ///  Richtung der X-Achse eines Standardkoordinatensystems
+        /// </summary>
+        public static Direction3 NegUnitX => new Direction3(-1.0, 0.0, 0.0);
+
+        /// <summary>
+        ///  Richtung der Y-Achse eines Standardkoordinatensystems
+        /// </summary>
+        public static Direction3 NegUnitY => new Direction3(0.0, -1.0, 0.0);
+
+        /// <summary>
+        ///  Richtung der Z-Achse eines Standardkoordinatensystems
+        /// </summary>
+        public static Direction3 NegUnitZ => new Direction3(0.0, 0.0, -1.0);
+
+        /// <summary>
         /// 
         /// </summary>
         public static Direction3 NaN => new Direction3(double.NaN, double.NaN, double.NaN);

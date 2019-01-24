@@ -210,6 +210,24 @@ namespace BimGisCad.Representation.Geometry.Elementary
             return Point2.Create(Point3.Dot(system.RefDirection, point), Point3.Dot(system.YAxis, point));
         }
 
+        /// <summary>
+        /// Schnittpunkt Ebene / Gerade
+        /// </summary>
+        /// <param name="plane"></param>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public static Point3? Intersection(Plane plane, Line3 line)
+        {
+            double d = Direction3.Dot(plane.Normal, line.Direction);
+ 
+            // kein Schnitt (parallel)
+            if(d < TRIGTOL) {
+                return null;
+            }
+
+            return Line3.PointOnLine(line, Direction3.Dot(plane.Normal, plane.Position - line.Position) / d);
+        }
+
         #endregion Methods
     }
 }

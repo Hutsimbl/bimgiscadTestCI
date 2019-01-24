@@ -94,6 +94,13 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+        public static Vector3 Create(Point3 vector) => new Vector3(vector.X, vector.Y, vector.Z);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
         public static Vector3 Create(Direction3 vector) => new Vector3(vector.X, vector.Y, vector.Z);
 
         /// <summary>
@@ -261,12 +268,32 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static double Det(Vector3 a, Vector3 b, Vector3 c) => Dot(a, Cross(b, c));
 
         /// <summary>
+        /// Determinante eines Tetraeders
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static double TetDet(Vector3 a, Vector3 b, Vector3 c, Vector3 d) => Det(a - d, b - d, c - d);
+
+
+        /// <summary>
         ///  Mittelwert zweier Vectoren
         /// </summary>
         /// <param name="a"> 1. Vektor </param>
         /// <param name="b"> 2. Vektor </param>
         /// <returns> Mittelpunkt </returns>
         public static Vector3 Mean(Vector3 a, Vector3 b) => new Vector3((a.X + b.X) / 2.0, (a.Y + b.Y) / 2.0, (a.Z + b.Z) / 2.0);
+
+        /// <summary>
+        ///  Mittelwert dreier Vectoren
+        /// </summary>
+        /// <param name="a"> 1. Vektor </param>
+        /// <param name="b"> 2. Vektor </param>
+        /// <param name="c"> 3. Vektor </param>
+        /// <returns> Mittelpunkt </returns>
+        public static Vector3 Mean(Vector3 a, Vector3 b, Vector3 c) => new Vector3((a.X + b.X + c.X) / 3.0, (a.Y + b.Y + c.Y) / 3.0, (a.Z + b.Z + c.Z) / 3.0);
 
         /// <summary>
         /// Geometrischer Vergleich
