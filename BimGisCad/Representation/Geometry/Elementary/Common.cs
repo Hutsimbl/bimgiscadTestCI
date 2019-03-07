@@ -44,9 +44,15 @@ namespace BimGisCad.Representation.Geometry.Elementary
         //public static readonly double MINDIST_SQUARED2 = 2.0 * MINDIST_SQUARED;
 
         /// <summary>
-        /// 
+        /// Faktor Grad - Rad
         /// </summary>
         public static readonly double RHODEG = 180.0 / Math.PI;
+
+        /// <summary>
+        /// Faktor Gon - Rad
+        /// </summary>
+        public static readonly double RHOGON = 200.0 / Math.PI;
+
 
         #endregion Fields
 
@@ -249,6 +255,36 @@ namespace BimGisCad.Representation.Geometry.Elementary
             SortAsc(ref b, ref c);
             SortAsc(ref a, ref b);
         }
+
+        /// <summary>
+        /// Rechnet Grad Wert in Rad um
+        /// <param name="deg"></param>
+        public static double Deg2Rad(double deg) => deg / RHODEG;
+
+        /// <summary>
+        /// Rechnet Rad Wert in Grad um
+        /// <param name="rad"></param>
+        public static double Rad2Deg(double rad) => rad * RHODEG;
+
+        /// <summary>
+        /// Rechnet Gon Wert in Rad um
+        /// <param name="gon"></param>
+        public static double Gon2Rad(double gon) => gon / RHOGON;
+
+        /// <summary>
+        /// Rechnet Rad Wert in Gon um
+        /// <param name="rad"></param>
+        public static double Rad2Gon(double rad) => rad * RHOGON;
+
+        ///// <summary>
+        ///// Rechnet Grad Wert in Rad um
+        ///// <param name="deg">Grad</param>
+        ///// <param name="min">Minute</param>
+        ///// <param name="sec">Sekunde</param>
+        //public static double DMS2Rad(double deg, double min, double sec)
+        //{
+
+        //}
 
         #endregion Methods
     }

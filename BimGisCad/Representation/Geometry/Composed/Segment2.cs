@@ -77,9 +77,28 @@ namespace BimGisCad.Representation.Geometry.Composed
         public static Vector2 LocalPos(Segment2 segment, Point2 point)
         {
             var p = point - segment.Start;
-            var x = Vector2.Dot(segment.Direction, p) / segment.Length;
-            var y = Vector2.Det(segment.Direction, p) / segment.Length;
+            double x = Vector2.Dot(segment.Direction, p) / segment.Length;
+            double y = Vector2.Det(segment.Direction, p) / segment.Length;
             return Vector2.Create(x, y);
+        }
+
+        /// <summary>
+        /// Berührt Punkt das Segment?
+        /// </summary>
+        /// <param name="segment"></param>
+        /// <param name="point"></param>
+        /// <param name="mindist">Mindestabstand != 0</param>
+        /// <returns></returns>
+        public static bool Touches(Segment2 segment, Point2 point, double mindist = MINDIST)
+        {
+            var p = point - segment.Start;
+            double y = Vector2.Det(segment.Direction, p) / segment.Length;
+            if(y > -mindist && y < mindist)
+            {
+                double x = Vector2.Dot(segment.Direction, p) / segment.Length;
+                return x > -mindist && (segment.length - x) > -mindist;
+            }
+            return false;
         }
 
         /// <summary>
