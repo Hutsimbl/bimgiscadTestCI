@@ -180,8 +180,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// </summary>
         /// <param name="system"></param>
         /// <param name="reference"></param>
-        /// <param name="axisPlane"></param>
-        public static Direction2 ToPlaneLocal(Axis2Placement3D system, Direction3 reference)
+       public static Direction2 ToPlaneLocal(Axis2Placement3D system, Direction3 reference)
         {
             return Direction2.Create(Direction3.Dot(system.RefDirection, reference), Direction3.Dot(system.YAxis, reference), null);
         }
@@ -191,7 +190,6 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// </summary>
         /// <param name="system"></param>
         /// <param name="reference"></param>
-        /// <param name="axisPlane"></param>
         public static Vector2 ToPlaneLocal(Axis2Placement3D system, Vector3 reference)
         {
             return Vector2.Create(Direction3.Dot(system.RefDirection, reference), Direction3.Dot(system.YAxis, reference));
@@ -202,7 +200,6 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// </summary>
         /// <param name="system"></param>
         /// <param name="reference"></param>
-        /// <param name="axisPlane"></param>
         /// <returns></returns>
         public static Point2 ToPlaneLocal(Axis2Placement3D system, Point3 reference)
         {

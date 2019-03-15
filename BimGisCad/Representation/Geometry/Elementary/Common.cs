@@ -259,21 +259,25 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <summary>
         /// Rechnet Grad Wert in Rad um
         /// <param name="deg"></param>
+        /// </summary>
         public static double Deg2Rad(double deg) => deg / RHODEG;
 
         /// <summary>
         /// Rechnet Rad Wert in Grad um
         /// <param name="rad"></param>
+        /// </summary>
         public static double Rad2Deg(double rad) => rad * RHODEG;
 
         /// <summary>
         /// Rechnet Gon Wert in Rad um
         /// <param name="gon"></param>
+        /// </summary>
         public static double Gon2Rad(double gon) => gon / RHOGON;
 
         /// <summary>
         /// Rechnet Rad Wert in Gon um
         /// <param name="rad"></param>
+        /// </summary>
         public static double Rad2Gon(double rad) => rad * RHOGON;
 
         ///// <summary>

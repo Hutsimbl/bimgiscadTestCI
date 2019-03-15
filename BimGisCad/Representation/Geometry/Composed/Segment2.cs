@@ -164,6 +164,12 @@ namespace BimGisCad.Representation.Geometry.Composed
             return true;
         }
 
+        ///<summary>
+        /// Schnittpunkt zweier Segmente (null wenn parallel), Achtung keine Prüfung ob Schnittpunkt außerhalb der Segmente!
+        ///</summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static Point2? Intersection(Segment2 a, Segment2 b)
         {
             double det = Vector2.Det(b.Direction, a.Direction);
