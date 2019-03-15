@@ -1,4 +1,5 @@
-﻿using BimGisCad.Representation.Geometry;
+﻿using System.Collections.Generic;
+using BimGisCad.Representation.Geometry;
 using BimGisCad.Representation.Geometry.Elementary;
 
 namespace BimGisCad.Representation.Geometry
@@ -109,6 +110,19 @@ namespace BimGisCad.Representation.Geometry
         public static Axis2Placement3D Create(Vector3 translation) => new Axis2Placement3D(translation, Direction3.UnitZ, Direction3.UnitX, false);
 
         /// <summary>
+        ///  Erzeugt 3D-System aus 2D-System, mit Axis als Z-Achse
+        /// </summary>
+        /// <param name="placement"> 2D-System </param>
+        /// <param name="z"> evtl. Z-Wert Translation</param>
+        /// <returns>  </returns>
+        public static Axis2Placement3D Create(Axis2Placement2D placement, double z = 0.0)
+        {
+            var loc = Vector3.Create(placement.Location.X, placement.Location.Y, z);
+            var dir = Direction3.Create(placement.RefDirection.X, placement.RefDirection.Y, 0.0);
+            return new Axis2Placement3D(loc, Direction3.UnitZ, dir, false);
+        }
+
+        /// <summary>
         ///  Erzeugt 3D-System im Ursprung
         /// </summary>
         /// <param name="axis"> Z Achse </param>
@@ -122,8 +136,9 @@ namespace BimGisCad.Representation.Geometry
         /// <param name="location"> Location</param>
         /// <param name="axis"> Z Achse </param>
         /// <param name="refDirection"> X Achse </param>
+        /// <param name="reCalcRefDirection">refDirection rechtwinklig zu axis rechnen (default=true) </param>
         /// <returns>  </returns>
-        public static Axis2Placement3D Create(Vector3 location, Direction3 axis, Direction3 refDirection) => new Axis2Placement3D(location, axis, refDirection);
+        public static Axis2Placement3D Create(Vector3 location, Direction3 axis, Direction3 refDirection, bool reCalcRefDirection = true) => new Axis2Placement3D(location, axis, refDirection, reCalcRefDirection);
 
         /// <summary>
         /// Achsen einer Ebene
@@ -299,13 +314,18 @@ namespace BimGisCad.Representation.Geometry
         /// <summary>
         /// Kombiniert mindestens zwei Systeme zu einem, Reihenfolge vom Kleinen ins Große (Ergebnis des kombinierten Systems ToGlobal, entspricht sys2.ToGlobal(sys1.ToGlobal(x)))
         /// </summary>
-        public static Axis2Placement3D Combine(params Axis2Placement3D[] systems)
+        public static Axis2Placement3D Combine(params Axis2Placement3D[] systems) => Combine(systems);
+ 
+        /// <summary>
+        /// Kombiniert mindestens zwei Systeme zu einem, Reihenfolge vom Kleinen ins Große (Ergebnis des kombinierten Systems ToGlobal, entspricht sys2.ToGlobal(sys1.ToGlobal(x)))
+        /// </summary>
+        public static Axis2Placement3D Combine(IReadOnlyList<Axis2Placement3D> systems)
         {
             // Lösung mit Quaternionen, aufwändiger aber numerisch stabiler
             var q = Quaternion.Create(systems[0].RefDirection, systems[0].YAxis, systems[0].Axis);
             var t = systems[0].Location;
 
-            for(int i = 1; i < systems.Length; i++)
+            for (int i = 1; i < systems.Count; i++)
             {
                 var qi = Quaternion.Create(systems[i].RefDirection, systems[i].YAxis, systems[i].Axis);
                 q = qi * q;
@@ -320,7 +340,6 @@ namespace BimGisCad.Representation.Geometry
             // var dirZ = Direction3.Create(Vector3.Cross(dirX, dirY), true);
             return new Axis2Placement3D(t, Quaternion.ZAxis(q), Quaternion.XAxis(q), false);
         }
-
         #endregion Methods
     }
 }
