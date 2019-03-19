@@ -96,6 +96,8 @@ namespace BimGisCad.Representation.Geometry
 
         #region Methods
 
+
+
         /// <summary>
         ///  Erzeugt Standardsystem
         /// </summary>
@@ -340,6 +342,9 @@ namespace BimGisCad.Representation.Geometry
             // var dirZ = Direction3.Create(Vector3.Cross(dirX, dirY), true);
             return new Axis2Placement3D(t, Quaternion.ZAxis(q), Quaternion.XAxis(q), false);
         }
+
+        public override string ToString() => string.Format("{0}, {1}, {2}", Location.ToString(), Axis.ToString(), refDirection.ToString());
+
         #endregion Methods
     }
 }

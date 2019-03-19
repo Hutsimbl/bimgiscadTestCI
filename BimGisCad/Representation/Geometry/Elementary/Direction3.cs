@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using static BimGisCad.Representation.Geometry.Elementary.Common;
 
 namespace BimGisCad.Representation.Geometry.Elementary
@@ -499,6 +500,8 @@ namespace BimGisCad.Representation.Geometry.Elementary
         {
             return AreCollinear(this, other);
         }
+
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0:F3} {1:F3} {2:F3}", X, Y, Z);
 
         #endregion Methods
     }

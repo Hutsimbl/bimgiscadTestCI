@@ -413,7 +413,8 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <returns></returns>
         public static string ToCSVString(Point3 point) => string.Format(CultureInfo.InvariantCulture, "{0},{1},{2}", point.X, point.Y, point.Z);
 
- 
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0:F3} {1:F3} {2:F3}", X, Y, Z);
+
 
         #endregion Methods
     }
