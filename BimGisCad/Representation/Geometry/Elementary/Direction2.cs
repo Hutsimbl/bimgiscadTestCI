@@ -206,12 +206,28 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Vector2 operator +(Vector2 a, Direction2 b) => Vector2.Create((a.X * b.X) - (a.Y * b.Y), (a.Y * b.X) + (a.X * b.Y));
 
         /// <summary>
+        ///  Richtungsaddition (Rotation)
+        /// </summary>
+        /// <param name="a"> 1. Summand </param>
+        /// <param name="b"> 2. Summand </param>
+        /// <returns> Summe </returns>
+        public static Vector3 operator +(Vector3 a, Direction2 b) => Vector3.Create((a.X * b.X) - (a.Y * b.Y), (a.Y * b.X) + (a.X * b.Y), a.Z);
+
+        /// <summary>
         ///  Richtungsaddition (Rotation um Ursprung)
         /// </summary>
         /// <param name="a"> 1. Summand </param>
         /// <param name="b"> 2. Summand </param>
         /// <returns> Summe </returns>
         public static Point2 operator +(Point2 a, Direction2 b) => Point2.Create((a.X * b.X) - (a.Y * b.Y), (a.Y * b.X) + (a.X * b.Y));
+
+        /// <summary>
+        ///  Richtungsaddition (Rotation um Ursprung)
+        /// </summary>
+        /// <param name="a"> 1. Summand </param>
+        /// <param name="b"> 2. Summand </param>
+        /// <returns> Summe </returns>
+        public static Point3 operator +(Point3 a, Direction2 b) => Point3.Create((a.X * b.X) - (a.Y * b.Y), (a.Y * b.X) + (a.X * b.Y), a.Z);
 
 
         /// <summary>

@@ -219,6 +219,17 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <returns> Summe </returns>
         public static Vector3 operator +(Vector3 a, Vector3 b) => new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 
+
+        /// <summary>
+        ///  Scale X and Y not Z
+        /// </summary>
+        public static Vector3 ScaleXY(double scale, Vector3 vector) => new Vector3(scale * vector.X, scale * vector.Y, vector.Z);
+
+        /// <summary>
+        ///  Unscale X and Y not Z (Division)
+        /// </summary>
+        public static Vector3 UnScaleXY(double scale, Vector3 vector) => new Vector3(vector.X / scale, vector.Y / scale, vector.Z);
+
         /// <summary>
         ///  Vektor Skalierung (Multiplikation)
         /// </summary>

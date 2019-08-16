@@ -272,6 +272,17 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Point3 operator +(Point3 a, Vector3 b) => new Point3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 
         /// <summary>
+        ///  Scale X and Y not Z
+        /// </summary>
+        public static Point3 ScaleXY(double scale, Point3 point) => new Point3(scale * point.X, scale * point.Y, point.Z);
+
+        /// <summary>
+        ///  Unscale X and Y not Z (Division)
+        /// </summary>
+        public static Point3 UnScaleXY(double scale, Point3 point) => new Point3(point.X / scale, point.Y / scale, point.Z);
+
+
+        /// <summary>
         ///  Skalierung (Multiplikation)
         /// </summary>
         /// <param name="a"> Skalar </param>
