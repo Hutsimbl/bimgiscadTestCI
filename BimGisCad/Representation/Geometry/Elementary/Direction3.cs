@@ -261,6 +261,27 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        /// Reflects a Direction with Unit X
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Direction3 ReflectWithUnitX(Direction3 toReflect) => new Direction3(toReflect.X, -toReflect.Y, -toReflect.Z);
+
+        /// <summary>
+        /// Reflects a Direction with Unit Y
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Direction3 ReflectWithUnitY(Direction3 toReflect) => new Direction3(-toReflect.X, toReflect.Y, -toReflect.Z);
+
+        /// <summary>
+        /// Reflects a Direction with Unit Z
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Direction3 ReflectWithUnitZ(Direction3 toReflect) => new Direction3(-toReflect.X, -toReflect.Y, toReflect.Z);
+
+        /// <summary>
         /// Multipliziert Zeilenvektor mit Matrix[rx,ry,rz] (rx ry und rz müssen orthonormal sein!)
         /// </summary>
         /// <param name="row"></param>
