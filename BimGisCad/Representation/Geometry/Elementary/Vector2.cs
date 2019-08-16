@@ -115,6 +115,12 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Vector2 Create(IReadOnlyList<double> xy, int startIndex = 0) => new Vector2(xy[startIndex], xy[startIndex + 1]);
 
         /// <summary>
+        /// Swaps X and Y
+        /// </summary>
+        public static Vector2 Swap(Vector2 vector) => new Vector2(vector.Y, vector.X);
+
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="vector"></param>

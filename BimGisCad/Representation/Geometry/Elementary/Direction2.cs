@@ -384,6 +384,11 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Direction2 ReflectWithUnitY(Direction2 toReflect) => new Direction2(-toReflect.X, toReflect.Y);
 
         /// <summary>
+        /// Swaps X and Y
+        /// </summary>
+        public static Direction2 Swap(Direction2 direction) => new Direction2(direction.Y, direction.X);
+
+        /// <summary>
         /// Geometrischer Vergleich
         /// </summary>
         /// <param name="other"></param>
