@@ -235,6 +235,18 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="point"></param>
         public static explicit operator Vector3(Point3 point) => Vector3.Create(point.X, point.Y, point.Z);
 
+
+        /// <summary>
+        ///  Changes the Origin (-)
+        /// </summary>
+        public static Point3 SetOriginTo(Point3 point, Point3 origin) => Point3.Create(point.X - origin.X, point.Y - origin.Y, point.Z - origin.Z);
+
+        /// <summary>
+        ///  Changes the Origin (+)
+        /// </summary>
+        public static Point3 SetOriginFrom(Point3 point, Point3 origin) => Point3.Create(point.X + origin.X, point.Y + origin.Y, point.Z - origin.Z);
+
+
         /// <summary>
         ///  Differenzvektor zwischen zwei Punkten
         /// </summary>

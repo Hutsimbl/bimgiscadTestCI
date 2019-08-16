@@ -162,6 +162,16 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        ///  Changes the Origin (-)
+        /// </summary>
+        public static Point2 SetOriginTo(Point2 point, Point2 origin) => Point2.Create(point.X - origin.X, point.Y - origin.Y);
+
+        /// <summary>
+        ///  Changes the Origin (+)
+        /// </summary>
+        public static Point2 SetOriginFrom(Point2 point, Point2 origin) => Point2.Create(point.X + origin.X, point.Y + origin.Y);
+
+        /// <summary>
         ///  Differenzvektor zwischen zwei Punkten
         /// </summary>
         /// <param name="a"> 1. Punkt </param>

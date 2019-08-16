@@ -166,12 +166,28 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Vector2 operator -(Vector2 a, Direction2 b) => Vector2.Create((a.X * b.X) + (a.Y * b.Y), (a.X * b.Y) - (a.Y * b.X));
 
         /// <summary>
+        ///  Richtungssubtraktion (Rotation um Z)
+        /// </summary>
+        /// <param name="a"> Minuend </param>
+        /// <param name="b"> Subtrahend </param>
+        /// <returns> Differenz </returns>
+        public static Vector3 operator -(Vector3 a, Direction2 b) => Vector3.Create((a.X * b.X) + (a.Y * b.Y), (a.X * b.Y) - (a.Y * b.X), a.Z);
+
+        /// <summary>
         ///  Richtungssubtraktion
         /// </summary>
         /// <param name="a"> Minuend </param>
         /// <param name="b"> Subtrahend </param>
         /// <returns> Differenz </returns>
         public static Point2 operator -(Point2 a, Direction2 b) => Point2.Create((a.X * b.X) + (a.Y * b.Y), (a.X * b.Y) - (a.Y * b.X));
+
+        /// <summary>
+        ///  Richtungssubtraktion (Rotation um Z)
+        /// </summary>
+        /// <param name="a"> Minuend </param>
+        /// <param name="b"> Subtrahend </param>
+        /// <returns> Differenz </returns>
+        public static Point3 operator -(Point3 a, Direction2 b) => Point3.Create((a.X * b.X) + (a.Y * b.Y), (a.X * b.Y) - (a.Y * b.X), a.Z);
 
         /// <summary>
         ///  Richtungsaddition
@@ -318,7 +334,7 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
-        ///  Senkrechte zur Richtung
+        ///  Rotate by 90° (Perpendicular) counterclockwise or if needed clockwise
         /// </summary>
         /// <param name="d">         Richtung </param>
         /// <param name="clockwise"> im Uhrzeigersinn (default false) </param>
@@ -350,15 +366,6 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="toReflect"></param>
         /// <returns></returns>
         public static Direction2 ReflectWithUnitY(Direction2 toReflect) => new Direction2(-toReflect.X, toReflect.Y);
-
-        /// <summary>
-        /// Rotate by 90° counterclockwise or if needed clockwise
-        /// </summary>
-        /// <param name="d"></param>
-        /// <param name="clockWise"></param>
-        /// <returns></returns>
-        public static Direction2 Rotate90(Direction2 d, bool clockWise = false) =>
-            clockWise ? new Direction2(d.Y,-d.X) : new Direction2(-d.Y, d.X); 
 
         /// <summary>
         /// Geometrischer Vergleich

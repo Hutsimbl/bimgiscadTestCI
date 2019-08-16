@@ -80,6 +80,20 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        public static Vector2 Create(Vector3 vector) => new Vector2(vector.X, vector.Y);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        public static Vector2 Create(Direction2 vector) => new Vector2(vector.X, vector.Y);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
@@ -260,12 +274,12 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static Vector2 ReflectWithUnitX(Vector2 toReflect) => new Vector2(toReflect.X, -toReflect.Y);
 
         /// <summary>
-        /// Rotate by 90° counterclockwise or if needed clockwise
+        /// Rotate by 90° (Perpendicular) counterclockwise or if needed clockwise
         /// </summary>
         /// <param name="v"></param>
         /// <param name="clockWise"></param>
         /// <returns></returns>
-        public static Vector2 Rotate90(Vector2 v, bool clockWise = false) =>
+        public static Vector2 Perp(Vector2 v, bool clockWise = false) =>
             clockWise ? new Vector2(v.Y, -v.X) : new Vector2(-v.Y, v.X);
 
         /// <summary>
