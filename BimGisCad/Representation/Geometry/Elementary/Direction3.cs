@@ -249,6 +249,18 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static double Det(Vector3 a, Vector3 b, Direction3 c) => Vector3.Dot(a, Cross(b, c));
 
         /// <summary>
+        /// Reflects a Direction with another Direction
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <param name="reflector"></param>
+        /// <returns></returns>
+        public static Direction3 ReflectWith(Direction3 toReflect, Direction3 reflector)
+        {
+            var scale = 2.0 * Dot(toReflect, reflector);
+            return new Direction3((scale * reflector.X) - toReflect.X, (scale * reflector.Y) - toReflect.Y, (scale * reflector.Z) - toReflect.Z);
+        }
+
+        /// <summary>
         /// Multipliziert Zeilenvektor mit Matrix[rx,ry,rz] (rx ry und rz müssen orthonormal sein!)
         /// </summary>
         /// <param name="row"></param>

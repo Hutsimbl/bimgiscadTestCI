@@ -241,6 +241,18 @@ namespace BimGisCad.Representation.Geometry.Elementary
         //       public static double Det(Vector2 a, Vector2 b) => (a.X + b.X) * (b.Y - a.Y); // effizienter
 
         /// <summary>
+        /// Reflects a Vector with a Direction
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <param name="reflector"></param>
+        /// <returns></returns>
+        public static Vector2 ReflectWith(Vector2 toReflect, Direction2 reflector)
+        {
+            var scale = 2.0 * Direction2.Dot(toReflect, reflector);
+            return new Vector2((scale * reflector.X) - toReflect.X, (scale * reflector.Y) - toReflect.Y);
+        }
+
+        /// <summary>
         /// Geometrischer Vergleich
         /// </summary>
         /// <param name="other"></param>

@@ -266,6 +266,14 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static double Dot(Direction2 a, Vector2 b) => (a.X * b.X) + (a.Y * b.Y);
 
         /// <summary>
+        ///  Skalarprodukt
+        /// </summary>
+        /// <param name="a"> 1. Vektor </param>
+        /// <param name="b"> 2. Vektor </param>
+        /// <returns> Skalarprodukt </returns>
+        public static double Dot(Direction2 a, Direction2 b) => (a.X * b.X) + (a.Y * b.Y);
+
+        /// <summary>
         ///  Determinante einer 2x2 Matrix aus zwei Vektoren
         /// </summary>
         /// <param name="a"> 1. Vektor </param>
@@ -316,6 +324,18 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="clockwise"> im Uhrzeigersinn (default false) </param>
         /// <returns> Senkrechte </returns>
         public static Direction2 Perp(Direction2 d, bool clockwise = false) => clockwise ? new Direction2(d.Y, -d.X) : new Direction2(-d.Y, d.X);
+
+        /// <summary>
+        /// Reflects a Direction with another Direction
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <param name="reflector"></param>
+        /// <returns></returns>
+        public static Direction2 ReflectWith(Direction2 toReflect, Direction2 reflector)
+        {
+            var scale = 2.0 * Dot(toReflect, reflector);
+            return new Direction2((scale * reflector.X) - toReflect.X, (scale * reflector.Y) - toReflect.Y);
+        }
 
         /// <summary>
         /// Geometrischer Vergleich

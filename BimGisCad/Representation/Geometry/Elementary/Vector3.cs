@@ -269,6 +269,18 @@ namespace BimGisCad.Representation.Geometry.Elementary
         public static double Det(Vector3 a, Vector3 b, Vector3 c) => Dot(a, Cross(b, c));
 
         /// <summary>
+        /// Reflects a Vector with a Direction
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <param name="reflector"></param>
+        /// <returns></returns>
+        public static Vector3 ReflectWith(Vector3 toReflect, Direction3 reflector)
+        {
+            var scale = 2.0 * Direction3.Dot(toReflect, reflector);
+            return new Vector3((scale * reflector.X) - toReflect.X, (scale * reflector.Y) - toReflect.Y, (scale * reflector.Z) - toReflect.Z);
+        }
+
+        /// <summary>
         /// Determinante eines Tetraeders
         /// </summary>
         /// <param name="a"></param>
