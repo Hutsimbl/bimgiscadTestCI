@@ -281,6 +281,27 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        /// Reflects a Vector with Unit X
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Vector3 ReflectWithUnitX(Vector3 toReflect) => new Vector3(toReflect.X, -toReflect.Y, -toReflect.Z);
+
+        /// <summary>
+        /// Reflects a Vector with Unit Y
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Vector3 ReflectWithUnitY(Vector3 toReflect) => new Vector3(-toReflect.X, toReflect.Y, -toReflect.Z);
+
+        /// <summary>
+        /// Reflects a Vector with Unit Z
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Vector3 ReflectWithUnitZ(Vector3 toReflect) => new Vector3(-toReflect.X, -toReflect.Y, toReflect.Z);
+
+        /// <summary>
         /// Determinante eines Tetraeders
         /// </summary>
         /// <param name="a"></param>

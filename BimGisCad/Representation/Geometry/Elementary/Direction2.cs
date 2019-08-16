@@ -338,6 +338,29 @@ namespace BimGisCad.Representation.Geometry.Elementary
         }
 
         /// <summary>
+        /// Reflects a Direction with Unit X
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Direction2 ReflectWithUnitX(Direction2 toReflect) => -toReflect;
+
+        /// <summary>
+        /// Reflects a Direction with Unit Y
+        /// </summary>
+        /// <param name="toReflect"></param>
+        /// <returns></returns>
+        public static Direction2 ReflectWithUnitY(Direction2 toReflect) => new Direction2(-toReflect.X, toReflect.Y);
+
+        /// <summary>
+        /// Rotate by 90° counterclockwise or if needed clockwise
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="clockWise"></param>
+        /// <returns></returns>
+        public static Direction2 Rotate90(Direction2 d, bool clockWise = false) =>
+            clockWise ? new Direction2(d.Y,-d.X) : new Direction2(-d.Y, d.X); 
+
+        /// <summary>
         /// Geometrischer Vergleich
         /// </summary>
         /// <param name="other"></param>
