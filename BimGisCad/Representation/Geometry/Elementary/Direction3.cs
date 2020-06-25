@@ -290,9 +290,9 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="rz"></param>
         /// <returns></returns>
         public static Direction3 RotateRow(Direction3 row, Direction3 rx, Direction3 ry, Direction3 rz) => new Direction3(
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z));
+             (row.X * rx.X) + (row.Y * rx.Y) + (row.Z * rx.Z),
+             (row.X * ry.X) + (row.Y * ry.Y) + (row.Z * ry.Z),
+             (row.X * rz.X) + (row.Y * rz.Y) + (row.Z * rz.Z));
 
         /// <summary>
         /// 
@@ -303,9 +303,9 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="rz"></param>
         /// <returns></returns>
         public static Vector3 RotateRow(Vector3 row, Direction3 rx, Direction3 ry, Direction3 rz) => Vector3.Create(
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z));
+             (row.X * rx.X) + (row.Y * rx.Y) + (row.Z * rx.Z),
+             (row.X * ry.X) + (row.Y * ry.Y) + (row.Z * ry.Z),
+             (row.X * rz.X) + (row.Y * rz.Y) + (row.Z * rz.Z));
 
         /// <summary>
         /// 
@@ -316,9 +316,9 @@ namespace BimGisCad.Representation.Geometry.Elementary
         /// <param name="rz"></param>
         /// <returns></returns>
         public static Point3 RotateRow(Point3 row, Direction3 rx, Direction3 ry, Direction3 rz) => Point3.Create(
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z),
-             (row.X * rx.X) + (row.Y * ry.Y) + (row.Z * rz.Z));
+             (row.X * rx.X) + (row.Y * rx.Y) + (row.Z * rx.Z),
+             (row.X * ry.X) + (row.Y * ry.Y) + (row.Z * ry.Z),
+             (row.X * rz.X) + (row.Y * rz.Y) + (row.Z * rz.Z));
 
         /// <summary>
         /// Multipliziert Matrix[rx,ry,rz] mit Spaltenvektor (rx ry und rz müssen orthonormal sein!)
