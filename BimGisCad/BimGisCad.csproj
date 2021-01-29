@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>6</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Description>Bibliothek zum Konvertieren von Daten verschiedener Konzepte (BIM - GIS -CAD) 
 Struktur, Namen und Funktionalität sind an die ISO 10303 angelehnt.</Description>
     <Company>HTW</Company>

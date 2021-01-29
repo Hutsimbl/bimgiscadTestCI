@@ -10,22 +10,22 @@ namespace BimGisCad.Representation.Geometry.Composed
     /// <summary>
     /// Klasse für TIN Objekte, Achtung Dreiecksindizes müssen gegen Uhrzeigersinn geordnet sein!
     /// </summary>
-    public class Tin
+    public readonly struct Tin
     {
         /// <summary>
         /// Punkte des TIN
         /// </summary>
-        public Point3[] Points { get; }
+        public IReadOnlyList<Point3> Points { get; }
 
         /// <summary>
         /// Dreiecke, Indizes der Vertizes (gegen Uhrzeigersinn ist positive Fläche!)
         /// </summary>
-        public int[] Triangles { get; }
+        public IReadOnlyList<int> Triangles { get; }
 
         /// <summary>
         /// Indizes der Nachbardreiecke (an Kante gegenüber Vertex, wenn negativ dann ohne Nachbar)
         /// </summary>
-        public int[] Neighbours { get; }
+        public IReadOnlyList<int> Neighbours { get; }
 
         /// <summary>
         /// Markierte Kanten (in der Regel Bruchkante, im Dreieck die Kante gegenüber Vertex)
@@ -40,12 +40,12 @@ namespace BimGisCad.Representation.Geometry.Composed
         /// <summary>
         /// Sind Nachbardreiecke definiert ?
         /// </summary>
-        public bool HasNeighBours => Neighbours.Length > 0;
+        public bool HasNeighBours => Neighbours.Count > 0;
 
         /// <summary>
         /// Anzahl der Dreiecke
         /// </summary>
-        public int NumTriangles => Triangles.Length / 3;
+        public int NumTriangles => Triangles.Count / 3;
 
         /// <summary>
         /// Konstruktor 
@@ -54,7 +54,7 @@ namespace BimGisCad.Representation.Geometry.Composed
         /// <param name="triangles">Dreiecke des TIN</param>
         /// <param name="neighbours">Nachbardreiecke</param>
         /// <param name="markedEdges">Markierte Kanten</param>
-        public Tin(Point3[] points, int[] triangles, int[] neighbours, BitArray markedEdges)
+        public Tin(in Point3[] points, in int[] triangles, in int[] neighbours, in BitArray markedEdges)
         {
             Points = points;
             Triangles = triangles;
@@ -182,7 +182,7 @@ namespace BimGisCad.Representation.Geometry.Composed
         /// </summary>
         public IEnumerable<int[]> TriangleVertexPointIndizes()
         {
-            for (int i = 0; i < Triangles.Length;)
+            for (int i = 0; i < Triangles.Count;)
             {
                 yield return new int[] { Triangles[i++], Triangles[i++], Triangles[i++] };
             }
@@ -193,7 +193,7 @@ namespace BimGisCad.Representation.Geometry.Composed
         /// </summary>
         public IEnumerable<Point3[]> TriangleVertizes()
         {
-            for (int i = 0; i < Triangles.Length;)
+            for (int i = 0; i < Triangles.Count;)
             {
                 yield return new Point3[] { Points[Triangles[i++]], Points[Triangles[i++]], Points[Triangles[i++]] };
             }
@@ -204,7 +204,7 @@ namespace BimGisCad.Representation.Geometry.Composed
         /// </summary>
         public IEnumerable<int[]> TriangleNeighbourIndizes()
         {
-            for (int i = 0; i < Neighbours.Length;)
+            for (int i = 0; i < Neighbours.Count;)
             {
                 yield return new int[] { Neighbours[i++], Neighbours[i++], Neighbours[i++] };
             }
@@ -267,7 +267,7 @@ namespace BimGisCad.Representation.Geometry.Composed
             /// Fügt Punkt dem TIN hinzu
             /// </summary>
             /// <param name="point"></param>
-            public void AddPoint(Point3 point)
+            public void AddPoint(in Point3 point)
             {
                 _points.Add(point);
             }
@@ -278,7 +278,7 @@ namespace BimGisCad.Representation.Geometry.Composed
             /// <param name="x"></param>
             /// <param name="y"></param>
             /// <param name="z"></param>
-            public void AddPoint(double x, double y, double z)
+            public void AddPoint(in double x, in double y, in double z)
             {
                 AddPoint(Point3.Create(x, y, z));
             }
