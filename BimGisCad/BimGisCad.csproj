@@ -9,6 +9,7 @@ Struktur, Namen und Funktionalität sind an die ISO 10303 angelehnt.</Descriptio
     <Authors>Enrico Romanschek</Authors>
     <Platforms>AnyCPU;x64</Platforms>
     <Version>1.0.6</Version>
+    <RepositoryUrl>https://github.com/Hutsimbl/bimgiscadTestCI</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
