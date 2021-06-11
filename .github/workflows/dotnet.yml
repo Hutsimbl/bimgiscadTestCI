@@ -17,7 +17,13 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.x
-    - name: Restore dependencies
-      run: dotnet restore
+    #- name: Restore dependencies
+    #  run: dotnet restore
     - name: Build
       run: dotnet build ./BimGisCad/BimGisCad.csproj
+    - name: Pack
+      run: dotnet pack --output ./artifacts
+    - uses: actions/upload-artifact@v2
+      with:
+        name: myNugetPkg
+        path: ./artifacts
