@@ -33,6 +33,6 @@ jobs:
     #- name: Add source to nuget
     #  run: dotnet nuget add source --username Hutsimbl --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Hutsimbl/index.json"
     - name: Publish the package to the repository
-      run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN}} --source "github"
+      run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN}} --source https://github.com/Hutsimbl/bimgiscadTestCI
       #env:
       #  NUGET_AUTH_TOKEN: ${{ github.token }}
