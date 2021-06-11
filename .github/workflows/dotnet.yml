@@ -30,9 +30,9 @@ jobs:
       with:
         name: BimGisCad
         path: ./BimGisCad/artifacts
-    - name: Add source to nuget
-      run: dotnet nuget add source --username Hutsimbl --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Hutsimbl/index.json"
+    #- name: Add source to nuget
+    #  run: dotnet nuget add source --username Hutsimbl --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Hutsimbl/index.json"
     - name: Publish the package to the repository
-      run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg
-      env:
-        NUGET_AUTH_TOKEN: ${{ github.token }}
+      run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN}} --source "github"
+      #env:
+      #  NUGET_AUTH_TOKEN: ${{ github.token }}
