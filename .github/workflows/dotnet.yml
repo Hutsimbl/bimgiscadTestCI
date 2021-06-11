@@ -7,7 +7,8 @@ on:
     branches: [ master ]
 
 env:
-  PROJECT_PATH: './BimGisCad/BimGisCad.csproj' 
+  PROJECT_PATH: './BimGisCad/BimGisCad.csproj'
+  OUTPUT_DIRECTORY: ${{github.workspace}}\output
 
 jobs:
   build:
@@ -25,14 +26,14 @@ jobs:
     - name: Build
       run: dotnet build ${{ env.PROJECT_PATH}}
     - name: Pack
-      run: dotnet pack ${{ env.PROJECT_PATH}} --output ./artifacts
+      run: dotnet pack ${{ env.PROJECT_PATH}} --output ${{ env.OUTPUT_DIRECTORY }}
     - uses: actions/upload-artifact@v2
       with:
         name: BimGisCad
-        path: ./BimGisCad/artifacts
-    - name: Add source to nuget
-      run: dotnet nuget add source --username Hutsimbl --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Hutsimbl/index.json"
+        path: ${{ env.OUTPUT_DIRECTORY }}
+    #- name: Add source to nuget
+    #  run: dotnet nuget add source --username Hutsimbl --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Hutsimbl/index.json"
     - name: Publish the package to the repository
-      run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg
-      env:
-        NUGET_AUTH_TOKEN: ${{ github.token }}
+      run: dotnet nuget push ${{env.OUTPUT_DIRECTORY}}\*.nupkg --api-key ${{ secrets.PACKAGE_TOKEN}} --source "https://nuget.pkg.github.com/Hutsimbl/index.json"
+      #env:
+      #  NUGET_AUTH_TOKEN: ${{ github.token }}
