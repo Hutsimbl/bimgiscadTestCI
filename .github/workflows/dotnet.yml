@@ -25,5 +25,6 @@ jobs:
       run: dotnet pack ./BimGisCad/BimGisCad.csproj --output ./artifacts
     - uses: actions/upload-artifact@v2
       with:
-        name: myNugetPkg
+        name: BimGisCad
         path: ./BimGisCad/artifacts
+      
