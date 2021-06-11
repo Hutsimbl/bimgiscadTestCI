@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
 
-envs:
+env:
   PROJECT_PATH: './BimGisCad/BimGisCad.csproj' 
 
 jobs:
