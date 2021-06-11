@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build ./BimGisCad/BimGisCad.csproj
     - name: Pack
-      run: dotnet pack --output ./artifacts
+      run: dotnet pack ./BimGisCad/BimGisCad.csproj --output ./artifacts
     - uses: actions/upload-artifact@v2
       with:
         name: myNugetPkg
