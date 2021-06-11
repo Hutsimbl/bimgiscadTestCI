@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master ]
 
+envs:
+  PROJECT_PATH: './BimGisCad/BimGisCad.csproj' 
+
 jobs:
   build:
 
@@ -20,9 +23,9 @@ jobs:
     #- name: Restore dependencies
     #  run: dotnet restore
     - name: Build
-      run: dotnet build ./BimGisCad/BimGisCad.csproj
+      run: dotnet build ${{ env.PROJECT_PATH}}
     - name: Pack
-      run: dotnet pack ./BimGisCad/BimGisCad.csproj --output ./artifacts
+      run: dotnet pack ${{ env.PROJECT_PATH}} --output ./artifacts
     - uses: actions/upload-artifact@v2
       with:
         name: BimGisCad
