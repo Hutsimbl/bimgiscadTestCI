@@ -29,3 +29,5 @@ jobs:
         path: ./BimGisCad/artifacts
     - name: Publish the package to the repository
       run: dotnet nuget push ./BimGisCad/bin/Debug/*.nupkg
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
