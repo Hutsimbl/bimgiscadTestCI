@@ -8,7 +8,7 @@ Struktur, Namen und Funktionalität sind an die ISO 10303 angelehnt.</Descriptio
     <Company>HTW</Company>
     <Authors>Enrico Romanschek</Authors>
     <Platforms>AnyCPU;x64</Platforms>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <RepositoryUrl>https://github.com/Hutsimbl/bimgiscadTestCI</RepositoryUrl>
   </PropertyGroup>
 
